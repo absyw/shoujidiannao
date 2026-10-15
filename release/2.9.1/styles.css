@@ -1,0 +1,1028 @@
+/* obsync 客户端样式。用 Obsidian 主题变量，明暗主题自适配。 */
+
+.obsync-subscription-box {
+  margin: 0.5em 0 1em;
+  padding: 0.75em 1em;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  background: var(--background-secondary);
+}
+
+.obsync-sub-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-bottom: 0.4em;
+}
+
+.obsync-sub-title {
+  font-weight: 600;
+}
+
+.obsync-sub-status {
+  font-size: 0.85em;
+  padding: 0.05em 0.55em;
+  border-radius: 999px;
+  background: var(--background-modifier-border);
+  color: var(--text-muted);
+}
+
+.obsync-sub-status[data-kind='active'] {
+  background: var(--color-green, #2e7d32);
+  color: var(--text-on-accent, #fff);
+}
+.obsync-sub-status[data-kind='trial'] {
+  background: var(--color-blue, #1565c0);
+  color: var(--text-on-accent, #fff);
+}
+.obsync-sub-status[data-kind='expired'] {
+  background: var(--color-red, #c62828);
+  color: var(--text-on-accent, #fff);
+}
+
+.obsync-sub-refresh {
+  margin-left: auto;
+}
+
+.obsync-sub-row {
+  color: var(--text-normal);
+  line-height: 1.7;
+  font-size: 0.95em;
+}
+
+.obsync-sub-hint {
+  color: var(--text-muted);
+  font-size: 0.85em;
+  margin-top: 0.3em;
+  min-height: 1em;
+}
+
+/* ── 无法同步文件：可诊断列表 ───────────────────────────────────────── */
+.obsync-failed-files {
+  margin: 0.5em 0 1em;
+  border: 1px solid var(--background-modifier-border);
+  border-left: 3px solid var(--text-error);
+  border-radius: 8px;
+  background: var(--background-secondary);
+}
+
+.obsync-failed-toggle {
+  width: 100%;
+  padding: 0.65em 0.85em;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+  color: var(--text-normal);
+  text-align: left;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.obsync-failed-list {
+  max-height: 40vh;
+  overflow-y: auto;
+  padding: 0 0.85em 0.75em;
+}
+
+.obsync-failed-row {
+  padding: 0.7em 0;
+  border-top: 1px solid var(--background-modifier-border);
+}
+
+.obsync-failed-path {
+  position: relative;
+  padding-left: 0.9em;
+  color: var(--text-normal);
+  font-weight: 600;
+  line-height: 1.5;
+  word-break: break-all;
+}
+
+.obsync-failed-path::before {
+  position: absolute;
+  top: 0.65em;
+  left: 0;
+  width: 0.4em;
+  height: 0.4em;
+  border-radius: 50%;
+  background: var(--text-error);
+  content: '';
+}
+
+.obsync-failed-reason {
+  margin-top: 0.25em;
+  color: var(--text-normal);
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+.obsync-failed-raw {
+  margin-top: 0.15em;
+  color: var(--text-muted);
+  font-size: 0.8em;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.obsync-failed-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45em;
+  margin-top: 0.55em;
+}
+
+.obsync-failed-actions button {
+  min-height: 32px;
+  padding: 0.4em 0.8em;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--button-radius);
+  box-shadow: var(--input-shadow);
+  background: var(--interactive-normal);
+  color: var(--text-normal);
+  cursor: pointer;
+}
+
+.obsync-failed-actions button:hover:not(:disabled) {
+  background: var(--interactive-hover);
+}
+
+.obsync-failed-actions button:disabled {
+  cursor: default;
+  opacity: 0.55;
+}
+
+/* Phone screenshots need an unmistakable, finger-sized action target. Desktop
+   keeps the compact native-setting proportions above. */
+.is-mobile .obsync-failed-actions button {
+  min-height: 40px;
+  padding: 0.55em 0.9em;
+}
+
+.obsync-failed-more,
+.obsync-failed-hint {
+  padding-top: 0.65em;
+  border-top: 1px solid var(--background-modifier-border);
+  color: var(--text-muted);
+  font-size: 0.85em;
+  line-height: 1.5;
+}
+
+.obsync-failed-more {
+  padding-bottom: 0.65em;
+}
+
+/* ── 同步异常逐路径详情（重试 / 不可读 / 类型冲突）────────────────── */
+.obsync-status-details {
+  margin: 0.5em 0 1em;
+  border: 1px solid var(--background-modifier-border);
+  border-left: 3px solid var(--interactive-accent);
+  border-radius: 8px;
+  background: var(--background-secondary);
+}
+
+.obsync-status-details-toggle {
+  width: 100%;
+  padding: 0.65em 0.85em;
+  border: 0;
+  box-shadow: none;
+  background: transparent;
+  color: var(--text-normal);
+  text-align: left;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.obsync-status-details-list {
+  max-height: 40vh;
+  overflow-y: auto;
+  padding: 0 0.85em 0.75em;
+}
+
+.obsync-status-details-group {
+  border-top: 1px solid var(--background-modifier-border);
+}
+
+.obsync-status-details-heading {
+  padding-top: 0.7em;
+  color: var(--text-normal);
+  font-weight: 600;
+}
+
+.obsync-status-details-row {
+  padding: 0.65em 0;
+}
+
+.obsync-status-details-path {
+  color: var(--text-normal);
+  font-weight: 600;
+  line-height: 1.5;
+  word-break: break-all;
+}
+
+.obsync-status-details-description {
+  margin-top: 0.2em;
+  color: var(--text-muted);
+  font-size: 0.9em;
+  line-height: 1.5;
+}
+
+.obsync-status-details-actions {
+  margin-top: 0.5em;
+}
+
+.obsync-status-details-actions button {
+  min-height: 32px;
+  padding: 0.4em 0.8em;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--button-radius);
+  box-shadow: var(--input-shadow);
+  background: var(--interactive-normal);
+  color: var(--text-normal);
+  cursor: pointer;
+}
+
+.obsync-status-details-actions button:hover {
+  background: var(--interactive-hover);
+}
+
+.is-mobile .obsync-status-details-actions button {
+  min-height: 40px;
+  padding: 0.55em 0.9em;
+}
+
+.obsync-status-details-more {
+  padding: 0.15em 0 0.65em;
+  color: var(--text-muted);
+  font-size: 0.85em;
+  line-height: 1.5;
+}
+
+/* ── 微信支付二维码块（续费 / 加购共用，见 src/settings/pay-qr-block.ts）──
+   2026-07-02 首版全靠内联 style；2026-07-10 加购复用同一形态时抽到这里。
+   显隐仍由调用方的内联 `style.display` 控制（续费块按到期状态 toggle）。
+   铁律：块内不渲染购买页网址明文，入口只有二维码本身。 */
+.obsync-pay-block {
+  margin: 0.6em 0;
+  padding: 0.6em;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.obsync-pay-title {
+  font-weight: 600;
+  margin-bottom: 0.4em;
+}
+
+/* 白底 + padding：深色主题下二维码仍可被相机识别。 */
+.obsync-pay-qr {
+  width: 180px;
+  height: 180px;
+  display: block;
+  margin: 0 auto;
+  border-radius: 6px;
+  background: #fff;
+  padding: 6px;
+}
+
+.obsync-pay-cap {
+  margin: 0.4em 0 0;
+}
+
+.obsync-pay-mobile-hint {
+  margin: 0.3em 0 0;
+  color: var(--text-muted);
+}
+
+/* 付款后闭环提示（续费块内，随块显隐；加购块的 .obsync-addon-foot 同形态） */
+.obsync-pay-foot {
+  margin-top: 0.5em;
+  color: var(--text-muted);
+  font-size: 0.85em;
+}
+
+/* ── 操作现场付费引导（见 src/settings/paywall.ts）──────────────────── */
+.obsync-paywall {
+  margin: 0.8em 0;
+  padding: 0.8em;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  background: var(--background-secondary);
+}
+
+.obsync-paywall-compact {
+  padding: 0.55em 0.7em;
+}
+
+.obsync-paywall-compact-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.7em;
+}
+
+.obsync-paywall-expand {
+  flex: 0 0 auto;
+}
+
+.obsync-paywall-details {
+  margin-top: 0.45em;
+}
+
+.obsync-paywall-title {
+  color: var(--text-error);
+  font-size: 1.05em;
+  font-weight: 600;
+}
+
+.obsync-paywall-description,
+.obsync-paywall-facts {
+  margin-top: 0.45em;
+  line-height: 1.6;
+}
+
+.obsync-paywall-facts {
+  font-weight: 600;
+}
+
+/* 这些是【裸 button】（不在 `new Setting()` 行里），Obsidian 桌面端还能靠全局
+   button 样式兜住，**手机端渲染成纯文字**——真机截图实拍：付费墙上「打开网页
+   管理页面（删除旧同步库）」「我已完成删除…」看着完全不像可点的东西。
+   统一按 `.obsync-failed-actions button` 那套给足边框/背景/触摸高度。 */
+.obsync-paywall-switch,
+.obsync-paywall-retry,
+.obsync-paywall-expand,
+.obsync-quota-halt-pay,
+.obsync-web-manage-open,
+.obsync-web-manage-recheck {
+  margin: 0.5em 0.35em 0 0;
+  min-height: 32px;
+  padding: 0.4em 0.9em;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--button-radius);
+  box-shadow: var(--input-shadow);
+  background: var(--interactive-normal);
+  color: var(--text-normal);
+  cursor: pointer;
+}
+
+.obsync-paywall-switch:hover,
+.obsync-paywall-retry:hover,
+.obsync-paywall-expand:hover,
+.obsync-quota-halt-pay:hover,
+.obsync-web-manage-open:hover,
+.obsync-web-manage-recheck:hover {
+  background: var(--interactive-hover);
+}
+
+/* 手机端手指点得到：与 `.obsync-failed-actions button` 同一档。 */
+.is-mobile .obsync-paywall-switch,
+.is-mobile .obsync-paywall-retry,
+.is-mobile .obsync-paywall-expand,
+.is-mobile .obsync-quota-halt-pay,
+.is-mobile .obsync-web-manage-open,
+.is-mobile .obsync-web-manage-recheck {
+  min-height: 40px;
+  padding: 0.55em 1em;
+}
+
+.obsync-paywall-compact-summary .obsync-paywall-expand {
+  margin-top: 0;
+}
+
+.obsync-paywall-retry-feedback {
+  margin-top: 0.45em;
+  line-height: 1.5;
+}
+
+.obsync-paywall-retry-feedback[data-kind='err'] {
+  color: var(--text-error);
+}
+
+.obsync-paywall-retry-feedback[data-kind='ok'] {
+  color: var(--text-success);
+}
+
+.obsync-notice-clickable {
+  cursor: pointer;
+}
+
+/* ── 本机 Obsidian 库 ⇅ 云端同步库 对应关系图（2026-07-26）───────────── */
+/* 两个「库」常常同名（新建时默认取本机文件夹名），光靠两行文字读不出从属
+   关系。做成【一张卡片、上下两半】：共用外框说明「这两个是一组」，中间一行
+   横向虚线 + 箭头说明「靠同步连起来」。
+   ⚠️ 连接线用【横向】不用竖向：竖线只有十几像素高、在浅色主题下等于看不见
+   （前两版真机截图连着实拍到两次）。横线跨整卡宽度，再淡也扫得到。 */
+.obsync-vault-map {
+  margin: 0.2em 0 0.9em;
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 8px;
+  background: var(--background-secondary);
+  overflow: hidden;
+}
+
+.obsync-vault-map-node {
+  padding: 0.6em 0.85em;
+}
+
+/* 云端一侧加一道左侧强调条：它才是「更换 / 加入 / 删除」这些操作的对象。 */
+.obsync-vault-map-node[data-side='remote'] {
+  box-shadow: inset 3px 0 0 var(--interactive-accent);
+}
+
+.obsync-vault-map-caption {
+  color: var(--text-muted);
+  font-size: 0.82em;
+  letter-spacing: 0.02em;
+}
+
+.obsync-vault-map-value {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.45em;
+  margin-top: 0.1em;
+}
+
+.obsync-vault-map-name {
+  font-weight: 600;
+  font-size: 1.05em;
+  color: var(--text-normal);
+  /* 超长库名不许把识别码挤出可视区 */
+  overflow-wrap: anywhere;
+}
+
+.obsync-vault-map-code {
+  font-family: var(--font-monospace);
+  font-size: 0.78em;
+  color: var(--text-accent);
+  background: var(--background-primary);
+  border: 1px solid var(--background-modifier-border);
+  border-radius: 4px;
+  padding: 0.05em 0.4em;
+  white-space: nowrap;
+}
+
+/* 这两句是关系图存在的理由，不是可忽略的元数据 —— 手机上 --text-faint 太淡
+   （codex 手机端审查 P1）。 */
+.obsync-vault-map-hint {
+  color: var(--text-muted);
+  font-size: 0.82em;
+  line-height: 1.5;
+  margin-top: 0.15em;
+}
+
+/* 中间分隔行：两侧横向虚线夹住「⇅ 加密同步」。 */
+.obsync-vault-map-link {
+  display: flex;
+  align-items: center;
+  gap: 0.55em;
+  padding: 0 0.85em;
+  color: var(--text-muted);
+  font-size: 0.85em;
+}
+
+.obsync-vault-map-link::before,
+.obsync-vault-map-link::after {
+  content: '';
+  flex: 1 1 auto;
+  border-top: 1px dashed var(--background-modifier-border);
+}
+
+.obsync-vault-map-arrow {
+  color: var(--text-accent);
+  font-size: 1.15em;
+  line-height: 1;
+}
+
+/* 卡片底部的注脚：解释的是【整张卡】，所以留在卡内做成 footer 行，
+   用实线分隔 + 主背景与上面两半区分开。 */
+.is-mobile .obsync-vault-map-hint {
+  font-size: 0.88em;
+}
+
+.obsync-vault-map-note {
+  margin: 0;
+  padding: 0.5em 0.85em;
+  border-top: 1px solid var(--background-modifier-border);
+  background: var(--background-primary);
+  color: var(--text-muted);
+  font-size: 0.85em;
+  line-height: 1.6;
+}
+
+/* ── 网页管理页面入口（2026-07-26；未绑定 / 额度被挡的现场也要够得着）──── */
+.obsync-web-manage {
+  margin-top: 1.1em;
+  padding-top: 0.8em;
+  border-top: 1px solid var(--background-modifier-border);
+}
+
+/* 付费块内部是「不花钱的那条路」，跟在扫码/已支付之后，视觉上更轻。 */
+.obsync-paywall .obsync-web-manage {
+  margin-top: 0.9em;
+}
+
+.obsync-web-manage-hint {
+  color: var(--text-muted);
+  line-height: 1.6;
+  font-size: 0.9em;
+}
+
+.obsync-paywall-or {
+  margin-top: 0.9em;
+  color: var(--text-muted);
+  font-size: 0.9em;
+}
+
+/* ── 加购空间折叠区块（2026-07-10）────────────────────────────────────── */
+.obsync-addon-intro {
+  color: var(--text-normal);
+  line-height: 1.7;
+  font-size: 0.95em;
+}
+
+.obsync-addon-notice {
+  margin-top: 0.4em;
+  padding: 0.4em 0.6em;
+  border-radius: 6px;
+  background: var(--background-modifier-border);
+  color: var(--text-muted);
+  font-size: 0.85em;
+  line-height: 1.6;
+}
+
+.obsync-addon-foot {
+  margin-top: 0.5em;
+  color: var(--text-muted);
+  font-size: 0.85em;
+}
+
+/* ── 折叠区块标题：整行可点（2026-07-10；此前只有右侧 chevron 可点）────── */
+.obsync-collapse-heading {
+  cursor: pointer;
+}
+
+/* ── 同步状态栏图标 ─────────────────────────────────────────────────────
+   Pixel-1:1 replica of Obsidian's official Sync status icon
+   (obapp analysis obsidian-source/app.css:15952-15984). Shipped here so the
+   look is self-contained and deterministic in E2E regardless of the host
+   Obsidian version. Same modifier classes, same theme vars
+   (--interactive-accent / --text-success / --text-error), same 5000ms linear
+   spin + reduced-motion opt-out. Applies to BOTH surfaces that carry
+   `.sync-status-icon`: the desktop status-bar span and the mobile
+   right-drawer header button. */
+.sync-status-icon {
+  display: flex;
+  align-items: center;
+  cursor: var(--cursor);
+}
+.sync-status-icon.mod-success {
+  color: var(--text-success);
+}
+.sync-status-icon.mod-working {
+  color: var(--interactive-accent);
+}
+.obsync-sync-status[data-mass-delete='true'],
+.sync-status-icon.mod-error {
+  color: var(--text-error);
+}
+.sync-status-icon.mod-spin svg {
+  animation-name: spin;
+  animation-duration: 5000ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+@media (prefers-reduced-motion: reduce) {
+  .sync-status-icon.mod-spin svg {
+    animation: none;
+  }
+}
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── 真实附件下载相位：文档内双箭头 marquee（周期 = SVG user units 9）── */
+.sync-status-icon.mod-asset-download svg .obsync-asset-arrows {
+  animation: obsync-asset-down-roll 1.2s linear infinite;
+}
+@keyframes obsync-asset-down-roll {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(9px);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sync-status-icon.mod-asset-download svg .obsync-asset-arrows {
+    animation: none;
+    transform: translateY(0);
+  }
+  .sync-status-icon.mod-asset-download svg .obsync-asset-arrow-loop {
+    display: none;
+  }
+}
+
+/* ── 进度环：有诚实分母时，同步球按「已完成比例」画弧 ───────────────────
+   用户要的形态：50% = 半个圈带箭头在转，75% = 四分之三个圈。
+   - track 是完整圆（任务全长的刻度尺）。整个 <svg> 自转时，整圆看起来是静止的，
+     所以「在转」的视觉只来自那段弧和它前端的箭头。
+   - 只有 .mod-progress 才有环；没有诚实分母时图标退回官方 .mod-spin 转圈，
+     绝不画一个骗人的 0% 弧（CLAUDE.md §🔴进度展示铁律 第 3 条）。
+   - 尺寸不写死：根 svg 带 .svg-icon，跟随 Obsidian 的 --icon-size —— 桌面状态栏
+     和手机右抽屉表头各自的大小自动对齐官方字形。 */
+.sync-status-icon .obsync-progress-ring {
+  display: block;
+  overflow: visible;
+}
+.sync-status-icon .obsync-ring-track {
+  fill: none;
+  /* 中性灰底槽，不用 currentColor —— 暗色主题下同色系的淡紫底槽和亮紫进度弧
+     糊在一起，"还剩多少"就读不出来了。用 --text-muted 是因为它**跟着主题翻转**
+     （浅色主题里是深灰、深色主题里是浅灰），一条规则两边都有对比度；
+     --background-modifier-border 在深色主题里和抽屉按钮底色太接近（实拍验证）。 */
+  stroke: var(--text-muted, currentColor);
+  stroke-width: 2.1;
+  opacity: 0.38;
+}
+/* 深色主题底槽要更亮一档：实拍下 0.38 的灰在暗底 + 抽屉圆钮的浅灰底上几乎融掉，
+   50%/75% 看起来就只剩「一段紫色 loading」，读不出还剩多少（codex 样式复检应修）。 */
+.theme-dark .sync-status-icon .obsync-ring-track {
+  opacity: 0.62;
+}
+.sync-status-icon .obsync-ring-arc {
+  fill: none;
+  stroke: currentColor;
+  /* 比底圈略粗、又比箭头底边窄 —— 箭头要能从弧上"张"开才看得出是方向头。
+     2.6 → 2.4：叠上实心三角后局部明显重于官方线性图标（codex 样式复检建议）。 */
+  stroke-width: 2.4;
+  /* butt 而非 round：round 会让弧两端各多出半个笔宽，低比例时把 3% 画成 8%。 */
+  stroke-linecap: butt;
+}
+.sync-status-icon .obsync-ring-head {
+  fill: currentColor;
+  stroke: none;
+}
+/* 自转：复用官方 spin 关键帧。3600ms —— 比官方 5000ms 快一点（让人看出「还在动」），
+   但比最初的 2400ms 慢：转太快第一眼像不定量 loading，反而盖过「这是个定量进度」的
+   信息（codex 样式复检应修）。真正的「定量感」来自那圈静止的灰色刻度尺。 */
+.sync-status-icon.mod-progress svg {
+  animation-name: spin;
+  animation-duration: 3600ms;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+@media (prefers-reduced-motion: reduce) {
+  /* 停转，但弧本身照旧按比例画 —— 进度信息一点不少。 */
+  .sync-status-icon.mod-progress svg {
+    animation: none;
+  }
+}
+
+/* ── 「退出当前同步库」三步确认弹窗（2026-07-26 手机端修复）─────────────
+   第 2 屏正文最长，手机上整个弹窗比视口还高 → 「取消 / 继续」被安卓三键导航
+   压住、根本点不到（真机截图实拍，codex 判 P0）。做法：把 modal 正文变成
+   受限高度的滚动容器，按钮行 sticky 在它底部并预留系统安全区。 */
+/* 正文自己滚，按钮行在滚动区【外面】—— 结构上不可能重叠，也不依赖背景色
+   把下面的字盖住（sticky 版本实拍到正文从半透明背景里透出来）。 */
+.is-mobile .obsync-repair-body {
+  max-height: 52dvh;
+  overflow-y: auto;
+}
+
+.obsync-repair-actions {
+  border-top: 1px solid var(--background-modifier-border);
+}
+
+.is-mobile .obsync-repair-actions {
+  padding-bottom: max(0.5em, env(safe-area-inset-bottom, 0px));
+}
+
+/* 确认短语输入框：给足边框 + 占位 + 触摸高度，别再像个禁用按钮。 */
+.obsync-repair-confirm-input {
+  border: 1px solid var(--background-modifier-border) !important;
+  width: 100%;
+}
+
+.is-mobile .obsync-repair-confirm-input {
+  min-height: 44px;
+}
+
+/* 库名会被拼进按钮文字（「将这台设备加入「<库名>」」/「返回并加入「<库名>」」），
+   库名上限 64 字 → 窄屏必须允许换行，否则按钮横向溢出（codex 手机端审查 P1）。 */
+.obsync-vault-candidate .setting-item-control button,
+.obsync-create-confirm-actions button {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  height: auto;
+  text-align: center;
+}
+
+/* ── 回收站批量找回 ─────────────────────────────────────────────────── */
+.obsync-trash-modal {
+  display: flex;
+  flex-direction: column;
+  min-height: 16em;
+  max-height: 72vh;
+  /* 手机窄屏：分组标题很长（日期+个数+大小），绝不允许把整个弹窗撑出横向滚动 */
+  overflow-x: hidden;
+}
+
+.obsync-trash-toolbar,
+.obsync-trash-group-header,
+.obsync-trash-footer,
+.obsync-trash-actions,
+.obsync-trash-confirm-actions,
+.obsync-trash-result-actions,
+.obsync-trash-run-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+}
+
+.obsync-trash-toolbar,
+.obsync-trash-group-header,
+.obsync-trash-footer {
+  justify-content: space-between;
+}
+
+.obsync-trash-toolbar {
+  flex-wrap: wrap;
+  margin-bottom: 0.7em;
+}
+
+.obsync-trash-count,
+.obsync-trash-result-summary,
+.obsync-trash-progress {
+  font-weight: 600;
+}
+
+/* 列表主体（分组 + 底栏）——筛选/勾选只重画这一段，工具栏里的搜索框不重建。 */
+.obsync-trash-body {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  flex: 1 1 auto;
+}
+
+.obsync-trash-result-hint {
+  color: var(--text-muted);
+  margin-top: 0.3em;
+}
+
+.obsync-trash-search {
+  flex: 1 1 14em;
+  padding: 0;
+  border: 0;
+}
+
+.obsync-trash-search .setting-item-info {
+  display: none;
+}
+
+.obsync-trash-search .setting-item-control,
+.obsync-trash-search input {
+  width: 100%;
+}
+
+.obsync-trash-groups,
+.obsync-trash-run-list {
+  overflow-y: auto;
+  /* overflow-y:auto 会把 overflow-x 的 visible 计算成 auto —— 不显式关掉的话，
+     窄屏上任何一点内容溢出都会变成可横向滚动，实测手机端整列被推走、标题被切。 */
+  overflow-x: hidden;
+}
+
+.obsync-trash-group {
+  border-top: 1px solid var(--background-modifier-border);
+}
+
+.obsync-trash-group-header {
+  padding: 0.5em 0;
+}
+
+.obsync-trash-group-toggle {
+  /* flex 基数必须给 auto 且允许收缩，否则窄屏上按钮撑破分组容器 → 横向滚动 */
+  flex: 1 1 auto;
+  min-width: 0;
+  padding-left: 0;
+  overflow: hidden;
+  text-align: left;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.obsync-trash-group-select {
+  flex: 0 0 auto;
+}
+
+.obsync-trash-row {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 0.7em;
+  align-items: center;
+  padding: 0.55em 0.25em;
+  border-top: 1px solid var(--background-modifier-border);
+  cursor: pointer;
+}
+
+.obsync-trash-checkbox {
+  align-self: center;
+}
+
+.obsync-trash-toggle-setting {
+  padding: 0;
+  border: 0;
+}
+
+.obsync-trash-toggle-setting .setting-item-info {
+  display: none;
+}
+
+.obsync-trash-row-copy,
+.obsync-trash-row-main,
+.obsync-trash-file-name {
+  min-width: 0;
+}
+
+.obsync-trash-row-main {
+  display: flex;
+  align-items: center;
+  gap: 0.45em;
+}
+
+.obsync-trash-file-name {
+  overflow: hidden;
+  font-weight: 600;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.obsync-trash-conflict {
+  flex: 0 0 auto;
+  max-width: 45%;
+  padding: 0.05em 0.4em;
+  border: 1px solid var(--text-error);
+  border-radius: 999px;
+  color: var(--text-error);
+  font-size: 0.78em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.obsync-trash-row-meta,
+.obsync-trash-empty-hint,
+.obsync-trash-no-match,
+.obsync-trash-run-pending {
+  margin-top: 0.18em;
+  color: var(--text-muted);
+  font-size: 0.85em;
+}
+
+.obsync-trash-grace-urgent,
+.obsync-trash-confirm-warning,
+.obsync-trash-run-failed {
+  color: var(--text-error);
+}
+
+.obsync-trash-footer {
+  position: sticky;
+  bottom: 0;
+  flex-wrap: wrap;
+  padding-top: 0.7em;
+  border-top: 1px solid var(--background-modifier-border);
+}
+
+.obsync-trash-selected-summary {
+  margin-right: auto;
+}
+
+.obsync-trash-empty-title,
+.obsync-trash-no-match,
+.obsync-trash-failure-heading {
+  margin-top: 0.8em;
+  font-weight: 600;
+}
+
+.obsync-trash-empty-hint,
+.obsync-trash-no-match {
+  line-height: 1.6;
+}
+
+.obsync-trash-confirm-summary,
+.obsync-trash-confirm-warning,
+.obsync-trash-foreground-warning,
+.obsync-trash-result-summary,
+.obsync-trash-failure,
+.obsync-trash-progress {
+  line-height: 1.6;
+}
+
+.obsync-trash-foreground-warning {
+  padding: 0.55em 0;
+  border-top: 1px solid var(--background-modifier-border);
+  border-bottom: 1px solid var(--background-modifier-border);
+  font-weight: 600;
+}
+
+.obsync-trash-confirm-actions,
+.obsync-trash-result-actions,
+.obsync-trash-run-actions {
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  margin-top: 1em;
+}
+
+.obsync-trash-run-list,
+.obsync-trash-failures {
+  margin-top: 0.7em;
+}
+
+.obsync-trash-run-item,
+.obsync-trash-failure {
+  padding: 0.25em 0;
+}
+
+.obsync-trash-run-running {
+  color: var(--interactive-accent);
+}
+
+@media (max-width: 480px) {
+  .obsync-trash-modal {
+    max-height: 78vh;
+  }
+
+  .obsync-trash-toolbar,
+  .obsync-trash-footer {
+    align-items: stretch;
+  }
+
+  .obsync-trash-actions,
+  .obsync-trash-confirm-actions,
+  .obsync-trash-result-actions,
+  .obsync-trash-run-actions {
+    width: 100%;
+  }
+
+  .obsync-trash-actions button,
+  .obsync-trash-confirm-actions button,
+  .obsync-trash-result-actions button,
+  .obsync-trash-run-actions button {
+    min-height: 40px;
+  }
+
+  .obsync-trash-conflict {
+    max-width: 52%;
+  }
+}
+
+/* ── 设置页散落文字与设置行左对齐（2026-09-23）───────────────────────────
+   Obsidian 1.13 的 .setting-item / 分组标题都有 var(--size-4-4) 左右内边距，
+   直接挂在设置容器里的状态行、说明段、按钮原本贴着容器边，比上下文字左偏一截。 */
+.obsync-sync-status,
+.obsync-addon-intro,
+.obsync-addon-foot,
+.obsync-settings-note {
+  padding-inline: var(--size-4-4);
+}
+.obsync-view-mass-delete,
+.obsync-quota-halt-pay {
+  margin-inline-start: var(--size-4-4);
+}
+.obsync-addon-notice {
+  margin-inline: var(--size-4-4);
+}
+.obsync-require-login {
+  padding-inline: var(--size-4-4);
+}
+.obsync-require-login h2 {
+  padding-inline: 0;
+}
+
+/* Obsidian 给 button 设了 display，会盖掉 hidden 属性：没有待确认删除时按钮仍在。 */
+.obsync-view-mass-delete[hidden] {
+  display: none;
+}
+
+/* 折叠分组标题整行可点：悬停给底色，和不可点的普通分组标题区分开。 */
+.obsync-collapse-heading {
+  border-radius: var(--radius-s);
+}
+.obsync-collapse-heading:hover {
+  background-color: var(--background-modifier-hover);
+}
+
+.obsync-sub-usage-title {
+  margin-top: 0.6em;
+  font-weight: 600;
+}
+.obsync-sub-hint:empty {
+  display: none;
+}
